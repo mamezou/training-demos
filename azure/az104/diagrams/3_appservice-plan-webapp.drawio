@@ -1,0 +1,46 @@
+<mxfile host="Electron" version="30.4.1">
+  <diagram id="d" name="Azure">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="page-background" parent="1" style="fontFamily=IPAPGothic;rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;pointerEvents=0;" value="" vertex="1">
+          <mxGeometry height="898" width="1398" x="1" y="1" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=22;fontStyle=1;align=left;verticalAlign=middle;fontColor=#1F1F1F;" value="App Service プランと Web アプリの構成" vertex="1">
+          <mxGeometry height="34" width="1300" x="40" y="18" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/identity/Users.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="64" x="80" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="user-label" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=13;fontStyle=1;align=center;verticalAlign=top;fontColor=#1F1F1F;" value="利用者" vertex="1">
+          <mxGeometry height="24" width="120" x="52" y="398" as="geometry" />
+        </mxCell>
+        <mxCell id="subscription" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#0078D4;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=46;spacingTop=8;fontSize=16;fontStyle=1;fontColor=#0078D4;" value="サブスクリプション" vertex="1">
+          <mxGeometry height="480" width="940" x="420" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="subscription-icon" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/general/Subscriptions.svg;" value="" vertex="1">
+          <mxGeometry height="26" width="26" x="432" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="plan" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#666666;strokeWidth=1.5;verticalAlign=top;align=left;spacingLeft=42;spacingTop=8;fontSize=13;fontStyle=1;fontColor=#1F1F1F;" value="App Service プラン(Linux・無料の F1 サービス プラン)" vertex="1">
+          <mxGeometry height="360" width="800" x="480" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="plan-icon" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/app_services/App_Service_Plans.svg;" value="" vertex="1">
+          <mxGeometry height="24" width="24" x="490" y="208" as="geometry" />
+        </mxCell>
+        <mxCell id="app" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/app_services/App_Services.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="64" x="800" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="app-label" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=13;fontStyle=1;align=center;verticalAlign=top;fontColor=#1F1F1F;" value="Web アプリ&#xa;(ランタイム スタック: .NET)" vertex="1">
+          <mxGeometry height="44" width="200" x="732" y="398" as="geometry" />
+        </mxCell>
+        <mxCell id="plan-note" parent="1" style="fontFamily=IPAPGothic;text;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;align=left;verticalAlign=top;fontColor=#666666;" value="プランの設定: スケールアップ(価格プラン)、スケールアウト(手動またはルールベース)" vertex="1">
+          <mxGeometry height="24" width="760" x="500" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-app" edge="1" parent="1" source="user" target="app" style="fontFamily=IPAPGothic;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;labelBackgroundColor=#FFFFFF;strokeColor=#0078D4;strokeWidth=2.5;endArrow=block;endFill=1;fontColor=#0078D4;fontSize=12;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="アプリの URL への&#xa;アクセス">
+          <mxGeometry x="-0.75" relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,67 @@
+<mxfile host="Electron" version="30.4.1">
+  <diagram id="d" name="Azure">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="page-background" parent="1" style="fontFamily=IPAPGothic;rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;pointerEvents=0;" value="" vertex="1">
+          <mxGeometry height="898" width="1398" x="1" y="1" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=22;fontStyle=1;align=left;verticalAlign=middle;fontColor=#1F1F1F;" value="Blob コンテナーの非公開アクセスと SAS URL によるアクセス" vertex="1">
+          <mxGeometry height="34" width="1300" x="40" y="18" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/identity/Users.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="64" x="60" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="user-label" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=13;fontStyle=1;align=center;verticalAlign=top;fontColor=#1F1F1F;" value="利用者" vertex="1">
+          <mxGeometry height="24" width="120" x="32" y="468" as="geometry" />
+        </mxCell>
+        <mxCell id="subscription" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#0078D4;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=46;spacingTop=8;fontSize=16;fontStyle=1;fontColor=#0078D4;" value="サブスクリプション" vertex="1">
+          <mxGeometry height="640" width="1060" x="300" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="subscription-icon" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/general/Subscriptions.svg;" value="" vertex="1">
+          <mxGeometry height="26" width="26" x="312" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="sa" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#0078D4;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=42;spacingTop=8;fontSize=16;fontStyle=1;fontColor=#0078D4;" value="ストレージ アカウント" vertex="1">
+          <mxGeometry height="520" width="960" x="360" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="sa-icon" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/storage/Storage_Accounts.svg;" value="" vertex="1">
+          <mxGeometry height="24" width="24" x="370" y="188" as="geometry" />
+        </mxCell>
+        <mxCell id="cont" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#666666;strokeWidth=1.5;verticalAlign=top;align=left;spacingLeft=42;spacingTop=8;fontSize=13;fontStyle=1;fontColor=#1F1F1F;" value="Blob コンテナー(アクセスレベル: プライベート)" vertex="1">
+          <mxGeometry height="360" width="700" x="560" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="cont-icon" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/general/Storage_Container.svg;" value="" vertex="1">
+          <mxGeometry height="24" width="24" x="570" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="blob" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/general/Blob_Block.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="64" x="860" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="blob-label" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=13;fontStyle=1;align=center;verticalAlign=top;fontColor=#1F1F1F;" value="BLOB(アップロードしたファイル)" vertex="1">
+          <mxGeometry height="24" width="240" x="772" y="468" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-blob" edge="1" parent="1" source="user" target="blob" style="fontFamily=IPAPGothic;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;labelBackgroundColor=#FFFFFF;strokeColor=#0078D4;strokeWidth=2.5;endArrow=block;endFill=1;fontColor=#0078D4;fontSize=12;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="SAS URL でのアクセス&#xa;(権限・開始時間と有効期限・&#xa;許可するプロトコルを指定)">
+          <mxGeometry x="-0.75" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-user-cont" edge="1" parent="1" source="user" target="cont" style="fontFamily=IPAPGothic;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;labelBackgroundColor=#FFFFFF;strokeColor=#CC0000;strokeWidth=2;dashed=1;dashPattern=8 4;endArrow=cross;endFill=0;fontColor=#CC0000;fontSize=12;fontStyle=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" value="匿名アクセス(遮断)">
+          <mxGeometry x="0.2" relative="1" as="geometry"><Array as="points"><mxPoint x="92" y="230" /><mxPoint x="910" y="230" /></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="legend" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#AAAAAA;strokeWidth=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontSize=12;fontStyle=1;fontColor=#1F1F1F;" value="凡例" vertex="1">
+          <mxGeometry height="86" width="370" x="990" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-line-0" parent="1" style="fontFamily=IPAPGothic;line;html=1;strokeWidth=2.5;strokeColor=#0078D4;" value="" vertex="1">
+          <mxGeometry height="8" width="50" x="1010" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-text-0" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#1F1F1F;" value="SAS URL でのアクセス" vertex="1">
+          <mxGeometry height="20" width="275" x="1075" y="814" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-line-1" parent="1" style="fontFamily=IPAPGothic;line;html=1;strokeWidth=2;strokeColor=#CC0000;dashed=1;dashPattern=8 4;" value="" vertex="1">
+          <mxGeometry height="8" width="50" x="1010" y="846" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-text-1" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#1F1F1F;" value="遮断された経路" vertex="1">
+          <mxGeometry height="20" width="275" x="1075" y="840" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

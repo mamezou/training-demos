@@ -1,0 +1,61 @@
+<mxfile host="Electron" version="30.4.1">
+  <diagram id="d" name="Azure">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="page-background" parent="1" style="fontFamily=IPAPGothic;rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;pointerEvents=0;" value="" vertex="1">
+          <mxGeometry height="898" width="1398" x="1" y="1" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=22;fontStyle=1;align=left;verticalAlign=middle;fontColor=#1F1F1F;" value="仮想マシン スケール セットのスケーリング(CPUしきい値によるインスタンス数の増減)" vertex="1">
+          <mxGeometry height="34" width="1300" x="40" y="18" as="geometry" />
+        </mxCell>
+        <mxCell id="subscription" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#0078D4;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=46;spacingTop=8;fontSize=16;fontStyle=1;fontColor=#0078D4;" value="サブスクリプション" vertex="1">
+          <mxGeometry height="430" width="1320" x="40" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="subscription-icon" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/general/Subscriptions.svg;" value="" vertex="1">
+          <mxGeometry height="26" width="26" x="52" y="158" as="geometry" />
+        </mxCell>
+        <mxCell id="policy" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#666666;strokeWidth=1;fontSize=13;fontStyle=0;fontColor=#1F1F1F;align=left;verticalAlign=middle;spacingLeft=8;spacingRight=8;" value="スケーリング タブの設定&#xa;・手動スケールとスケールイン ポリシー&#xa;・カスタム スケーリング ポリシー&#xa;(CPU しきい値(%)で増減を判断)" vertex="1">
+          <mxGeometry height="170" width="330" x="80" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="vmss" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/compute/VM_Scale_Sets.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="64" x="700" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="vmss-label" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=13;fontStyle=1;align=center;verticalAlign=top;fontColor=#1F1F1F;" value="仮想マシン スケール セット&#xa;オーケストレーション モード:&#xa;均一またはフレキシブル" vertex="1">
+          <mxGeometry height="64" width="250" x="607" y="408" as="geometry" />
+        </mxCell>
+        <mxCell id="inst" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#666666;strokeWidth=1.5;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;fontSize=13;fontStyle=1;fontColor=#1F1F1F;" value="VM インスタンス" vertex="1">
+          <mxGeometry height="250" width="340" x="950" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="vm1" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/compute/Virtual_Machine.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="64" x="990" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="vm2" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/compute/Virtual_Machine.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="64" x="1150" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-policy-vmss" edge="1" parent="1" source="policy" target="vmss" style="fontFamily=IPAPGothic;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;labelBackgroundColor=#FFFFFF;strokeColor=#0078D4;strokeWidth=2.5;endArrow=block;endFill=1;fontColor=#0078D4;fontSize=12;fontStyle=1;exitX=1;exitY=0.4235;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="CPU しきい値(%)で判断">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-vmss-inst" edge="1" parent="1" source="vmss" target="inst" style="fontFamily=IPAPGothic;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;labelBackgroundColor=#FFFFFF;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;fontColor=#404040;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.448;entryDx=0;entryDy=0;" value="スケールアウト・&#xa;スケールイン">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#AAAAAA;strokeWidth=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontSize=12;fontStyle=1;fontColor=#1F1F1F;" value="凡例" vertex="1">
+          <mxGeometry height="86" width="370" x="990" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-line-0" parent="1" style="fontFamily=IPAPGothic;line;html=1;strokeWidth=2.5;strokeColor=#0078D4;" value="" vertex="1">
+          <mxGeometry height="8" width="50" x="1010" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-text-0" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#1F1F1F;" value="スケーリングの判断" vertex="1">
+          <mxGeometry height="20" width="275" x="1075" y="814" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-line-1" parent="1" style="fontFamily=IPAPGothic;line;html=1;strokeWidth=1.5;strokeColor=#404040;" value="" vertex="1">
+          <mxGeometry height="8" width="50" x="1010" y="846" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-text-1" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#1F1F1F;" value="インスタンス数の変更" vertex="1">
+          <mxGeometry height="20" width="275" x="1075" y="840" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

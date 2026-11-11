@@ -1,0 +1,76 @@
+<mxfile host="Electron" version="30.4.1">
+  <diagram id="d" name="Azure">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="page-background" parent="1" style="fontFamily=IPAPGothic;rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=none;pointerEvents=0;" value="" vertex="1">
+          <mxGeometry height="898" width="1398" x="1" y="1" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=22;fontStyle=1;align=left;verticalAlign=middle;fontColor=#1F1F1F;" value="Azure Monitor のアラート ルールとログ分析" vertex="1">
+          <mxGeometry height="34" width="1300" x="40" y="18" as="geometry" />
+        </mxCell>
+        <mxCell id="subscription" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#0078D4;strokeWidth=2;verticalAlign=top;align=left;spacingLeft=46;spacingTop=8;fontSize=16;fontStyle=1;fontColor=#0078D4;" value="サブスクリプション" vertex="1">
+          <mxGeometry height="600" width="1320" x="40" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="subscription-icon" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/general/Subscriptions.svg;" value="" vertex="1">
+          <mxGeometry height="26" width="26" x="52" y="108" as="geometry" />
+        </mxCell>
+        <mxCell id="scope" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#666666;strokeWidth=1;fontSize=13;fontStyle=1;fontColor=#1F1F1F;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;" value="スコープ&#xa;サブスクリプション、リソース タイプ、&#xa;リソースの場所でフィルター" vertex="1">
+          <mxGeometry height="110" width="300" x="80" y="362" as="geometry" />
+        </mxCell>
+        <mxCell id="mon" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#666666;strokeWidth=1.5;verticalAlign=top;align=left;spacingLeft=42;spacingTop=8;fontSize=13;fontStyle=1;fontColor=#1F1F1F;" value="Azure Monitor" vertex="1">
+          <mxGeometry height="500" width="760" x="560" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="mon-icon" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/management_governance/Monitor.svg;" value="" vertex="1">
+          <mxGeometry height="24" width="24" x="570" y="178" as="geometry" />
+        </mxCell>
+        <mxCell id="alerts" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/management_governance/Alerts.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="64" x="640" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="alerts-label" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=13;fontStyle=1;align=center;verticalAlign=top;fontColor=#1F1F1F;" value="アラート ルール&#xa;(条件・重大度)" vertex="1">
+          <mxGeometry height="44" width="200" x="572" y="318" as="geometry" />
+        </mxCell>
+        <mxCell id="ag" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#666666;strokeWidth=1;fontSize=13;fontStyle=1;fontColor=#1F1F1F;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;" value="アクション グループ" vertex="1">
+          <mxGeometry height="60" width="180" x="860" y="252" as="geometry" />
+        </mxCell>
+        <mxCell id="notify" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#666666;strokeWidth=1;fontSize=13;fontStyle=1;fontColor=#1F1F1F;align=center;verticalAlign=middle;spacingLeft=8;spacingRight=8;" value="通知" vertex="1">
+          <mxGeometry height="60" width="160" x="1120" y="252" as="geometry" />
+        </mxCell>
+        <mxCell id="law" parent="1" style="fontFamily=IPAPGothic;image;aspect=fixed;html=1;points=[];image=img/lib/azure2/analytics/Log_Analytics_Workspaces.svg;" value="" vertex="1">
+          <mxGeometry height="64" width="64" x="640" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="law-label" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=13;fontStyle=1;align=center;verticalAlign=top;fontColor=#1F1F1F;" value="Log Analytics&#xa;(テーブル・KQL クエリ)" vertex="1">
+          <mxGeometry height="44" width="220" x="562" y="588" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-scope-alerts" edge="1" parent="1" source="scope" target="alerts" style="fontFamily=IPAPGothic;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;labelBackgroundColor=#FFFFFF;strokeColor=#0078D4;strokeWidth=2.5;endArrow=block;endFill=1;fontColor=#0078D4;fontSize=12;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="メトリック">
+          <mxGeometry x="0.29" relative="1" as="geometry"><Array as="points"><mxPoint x="440" y="417" /><mxPoint x="440" y="282" /></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="edge-scope-law" edge="1" parent="1" source="scope" target="law" style="fontFamily=IPAPGothic;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;labelBackgroundColor=#FFFFFF;strokeColor=#0078D4;strokeWidth=2.5;endArrow=block;endFill=1;fontColor=#0078D4;fontSize=12;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="ログ">
+          <mxGeometry x="0.29" relative="1" as="geometry"><Array as="points"><mxPoint x="440" y="417" /><mxPoint x="440" y="552" /></Array></mxGeometry>
+        </mxCell>
+        <mxCell id="edge-alerts-ag" edge="1" parent="1" source="alerts" target="ag" style="fontFamily=IPAPGothic;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;labelBackgroundColor=#FFFFFF;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;fontColor=#404040;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="アラートの発生">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ag-notify" edge="1" parent="1" source="ag" target="notify" style="fontFamily=IPAPGothic;edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;labelBackgroundColor=#FFFFFF;strokeColor=#404040;strokeWidth=1.5;endArrow=block;endFill=1;fontColor=#404040;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="通知の送信">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" parent="1" style="fontFamily=IPAPGothic;rounded=0;html=1;whiteSpace=wrap;fillColor=none;strokeColor=#AAAAAA;strokeWidth=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;fontSize=12;fontStyle=1;fontColor=#1F1F1F;" value="凡例" vertex="1">
+          <mxGeometry height="86" width="370" x="990" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-line-0" parent="1" style="fontFamily=IPAPGothic;line;html=1;strokeWidth=2.5;strokeColor=#0078D4;" value="" vertex="1">
+          <mxGeometry height="8" width="50" x="1010" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-text-0" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#1F1F1F;" value="スコープからの入力" vertex="1">
+          <mxGeometry height="20" width="275" x="1075" y="814" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-line-1" parent="1" style="fontFamily=IPAPGothic;line;html=1;strokeWidth=1.5;strokeColor=#404040;" value="" vertex="1">
+          <mxGeometry height="8" width="50" x="1010" y="846" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-text-1" parent="1" style="fontFamily=IPAPGothic;text;html=1;fontSize=11;align=left;verticalAlign=middle;fontColor=#1F1F1F;" value="アラート発生後の流れ" vertex="1">
+          <mxGeometry height="20" width="275" x="1075" y="840" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
