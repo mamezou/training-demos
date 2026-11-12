@@ -48,7 +48,13 @@ IAM Identity Centerのセッションから、別のアカウントのロール�
 
 Transit Gatewayで、Dev・Prod・Sharedの3つのVPCを接続しました。続けて、Transit Gatewayのルートテーブルを分けて、DevとProdの間の通信を止めます。
 
-![Transit Gatewayの構成図](diagrams/m05-transit-gateway.png)
+設定前は、Dev・Prod・Sharedが相互に通信できます。
+
+![Transit Gatewayの設定前の構成図](diagrams/m05-transit-gateway.png)
+
+設定後は、DevとProdは通信できず、DevとProdはそれぞれSharedと通信できます。
+
+![Transit Gatewayの設定後の構成図](diagrams/m05-transit-gateway-after.png)
 
 参考: [What is AWS Transit Gateway for Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html)、[Transit gateway route tables in AWS Transit Gateway](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html)
 
