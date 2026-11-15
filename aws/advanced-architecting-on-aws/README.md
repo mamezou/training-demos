@@ -58,21 +58,13 @@ Transit Gatewayで、Dev・Prod・Sharedの3つのVPCを接続しました。続
 
 参考: [What is AWS Transit Gateway for Amazon VPC?](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html)、[Transit gateway route tables in AWS Transit Gateway](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html)
 
-### モジュール6・Dockerの基本操作とカスタムイメージ
+### モジュール6・コンテナのデモ(Docker、Amazon ECR、AWS Fargate)
 
-`docker pull` と `docker container run` で、httpdとnginxのコンテナを起動しました。続けて、Dockerfileから `docker image build` でカスタムイメージを作り、ブラウザで表示します。
+DockerのないEC2にDockerを入れ、`grafana/grafana` を動かしました。続けて、4行のDockerfileから `adv-web` というイメージを作り、Amazon ECRに登録して、Amazon ECSのFargateのタスクで動かしました。
 
-![Dockerの基本操作とカスタムイメージの構成図](diagrams/m06-docker-basics.png)
+![モジュール6のコンテナのデモの構成図](diagrams/m06-container-demo.png)
 
-参考: [Creating a container image for use on Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-container-image.html)
-
-### モジュール6・ECS/Fargateへのデプロイ
-
-EC2でDockerイメージをビルドしてAmazon ECRに登録し、Amazon ECSのFargateで実行しました。ECSのタスク定義がECRのイメージを参照し、Fargateタスクにインターネットから届きます。
-
-![ECS/Fargateへのデプロイの構成図](diagrams/m06-ecs-fargate-flow.png)
-
-参考: [Architect for AWS Fargate for Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html)、[What is Amazon Elastic Container Registry?](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
+参考: [Creating a container image for use on Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-container-image.html)、[Architect for AWS Fargate for Amazon ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html)、[What is Amazon Elastic Container Registry?](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html)
 
 ### モジュール7・CodePipeline(ECS Fargate版)
 
