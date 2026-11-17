@@ -104,4 +104,16 @@ KMSのエンベロープ暗号化でデータキーを作り、ファイルを�
 | 1 | [fargate-wordpress-cdk](https://github.com/mamezou/fargate-wordpress-cdk) | CDK(TypeScript)で、Fargate、RDS、EFSによるWordPressの高可用性構成を作ります。 | 15〜20分 |
 | 5 | [tgw-demo-share](https://github.com/mamezou/tgw-demo-share) | Transit Gatewayで複数のVPCを接続します。 | 10〜15分 |
 | 7 | [ecs-cicd-cdk](https://github.com/mamezou/ecs-cicd-cdk) | GitHubへのpushから、CodePipeline、CodeBuild、手動承認を経て、ECS Fargateに反映するCI/CDを作ります。起動中はALBとFargateの料金がかかります。 | 15〜20分 |
-| 10 | [redis-demo](https://github.com/mamezou/redis-demo) | ElastiCache for Redisのクラスターを作ります。 | 30〜40分 |
+| 10 | [redis-demo](https://github.com/mamezou/redis-demo) | ElastiCache(Valkey)とRDS for MySQLに同じランキングのデータを入れ、書き込みと順位の取得の速度を比べます。 | 30〜40分 |
+
+### モジュール1・WordPress on Fargate(fargate-wordpress-cdk)
+
+CDKで、Application Load Balancer、Fargateのタスク、RDS for MySQL 8.4、EFSによるWordPressを作ります。利用者からの通信の経路と、WordPressのデータをEFSとRDSのどこに置くかを図で確かめます。
+
+![WordPress on Fargateの構成図](diagrams/m01-fargate-wordpress-cdk.png)
+
+### モジュール10・ValkeyとMySQLのランキング性能比較(redis-demo)
+
+CDKで、計測用のEC2、ElastiCache(Valkey)、RDS for MySQLを作ります。手元のPCからSystems ManagerのRun Commandで計測のコマンドを送り、EC2からValkeyとMySQLへの計測の通信を図で確かめます。
+
+![ValkeyとMySQLのランキング性能比較の構成図](diagrams/m10-redis-demo.png)
