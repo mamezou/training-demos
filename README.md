@@ -6,6 +6,7 @@
 
 ### AWS
 
+- [Architecting on AWSのデモの構成図とハンズオン](aws/architecting-on-aws/)
 - [Advanced Architecting on AWSのデモの構成図とハンズオン](aws/advanced-architecting-on-aws/)
 - [Developing Generative AI Applications on AWSのデモの構成図とハンズオン](aws/developing-genai/)
 - [Advanced Generative AI Development on AWSのデモの構成図とハンズオン](aws/advanced-developing-genai/)
