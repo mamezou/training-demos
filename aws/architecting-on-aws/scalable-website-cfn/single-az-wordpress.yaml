@@ -1,0 +1,270 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description:  >
+  This template deploys a basic WordPress environment operating in a single Availability Zone (AZ).
+  It installs WordPress on an Amazon EC2 instance and uses Amazon RDS to manage the database.
+  This configuration is cost-effective and suitable for small-scale blogs or websites.
+  The template includes the following:
+  - Amazon VPC and subnets
+  - A single EC2 instance (for WordPress)
+  - Single-AZ configuration Amazon RDS
+  - Necessary security groups and IAM roles
+
+Parameters:
+  VPCCIDR:
+    Type: String
+    Default: 10.0.0.0/16
+    AllowedPattern: >-
+      ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
+    ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/16-28
+    Description: CIDR block for VPC.
+  # KeyName:
+  #   Description : The EC2 Key Pair to allow SSH access to the instance.
+  #   Type        : 'AWS::EC2::KeyPair::KeyName'
+  EC2InstanceType:
+    Type: String
+    Default: t2.micro
+    Description: Select EC2 instance class.
+  EC2InstanceAMI:
+    Type    : AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Default : "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+  RDSInstanceClass:
+    Type          : String
+    Default       : db.t3.micro
+    AllowedValues :
+      - db.t3.micro
+      - db.t3.small
+      - db.t3.medium
+      - db.t3.large
+      - db.t3.xlarge
+    Description   : Select RDS instance class.
+  RDSDBName:
+    Type           : String
+    Default        : wordpress
+    MinLength      : 1
+    MaxLength      : 16
+    AllowedPattern : '[a-z]+'
+  RDSMasterUser:
+    Type           : String
+    Default        : admin
+    MinLength      : 1
+    MaxLength      : 16
+    NoEcho         : true
+    AllowedPattern : '[a-z]+'
+  RDSMasterPassword :
+    Type           : String
+    Default        : password
+    MinLength      : 8
+    MaxLength      : 16
+    NoEcho         : true
+    AllowedPattern : '[^\/@"]+'
+
+Resources:
+  # VPC
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VPCCIDR
+      InstanceTenancy: default
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: cfn
+
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [0, !GetAZs ""]
+      CidrBlock: 10.0.0.0/24
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: PublicSubnet1
+
+  PrivateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [0, !GetAZs ""]
+      CidrBlock: 10.0.2.0/24
+      Tags:
+        - Key: Name
+          Value: PrivateSubnet1
+
+  PrivateSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VPC
+      AvailabilityZone: !Select [1, !GetAZs ""]
+      CidrBlock: 10.0.3.0/24
+      Tags:
+        - Key: Name
+          Value: PrivateSubnet2
+
+  VPCIGW:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: cfn
+
+  VPCIGWAttach:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId: !Ref VPCIGW
+      VpcId: !Ref VPC
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: Public Route
+
+  PublicRoute:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref VPCIGW
+
+  PublicSubnet1Association:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet1
+      RouteTableId: !Ref PublicRouteTable
+
+  PrivateRouteTable1:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: Private Route1
+
+  PrivateRouteTable2:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: Private Route2
+
+  PrivateSubnet1Association:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnet1
+      RouteTableId: !Ref PrivateRouteTable1
+
+  PrivateSubnet2Association:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PrivateSubnet2
+      RouteTableId: !Ref PrivateRouteTable2
+
+  EC2SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: !Ref AWS::StackName
+      VpcId: !Ref VPC
+      SecurityGroupIngress:
+        # SSH
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        # HTTP
+        - IpProtocol: tcp
+          ToPort: 80
+          FromPort: 80
+          CidrIp: 0.0.0.0/0
+
+  DBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: !Ref AWS::StackName
+      VpcId: !Ref VPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          ToPort: 3306
+          FromPort: 3306
+          SourceSecurityGroupId: !Ref EC2SecurityGroup
+
+  # RDS
+  RDSSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: "SubnetGroup for WordPress"
+      SubnetIds:
+        - !Ref PrivateSubnet1
+        - !Ref PrivateSubnet2
+
+  RDSInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      AllocatedStorage   : 20
+      DBSubnetGroupName  : !Ref RDSSubnetGroup
+      DBInstanceClass    : !Ref RDSInstanceClass
+      DBName             : !Ref RDSDBName
+      MasterUsername     : !Ref RDSMasterUser
+      MasterUserPassword : !Ref RDSMasterPassword
+      Engine             : MySQL
+      EngineVersion      : '8.4'
+      PubliclyAccessible : false
+      StorageType        : gp2
+      VPCSecurityGroups  :
+        - !Ref DBSecurityGroup
+      # Backup False
+      BackupRetentionPeriod: 0
+    DeletionPolicy: Delete
+    UpdateReplacePolicy: Delete
+
+  # EC2
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: !Select [0, !GetAZs ""]
+      BlockDeviceMappings:
+        - DeviceName: /dev/xvda
+          Ebs:
+            VolumeSize: 8
+            VolumeType: gp2
+      ImageId: !Ref EC2InstanceAMI
+      InstanceInitiatedShutdownBehavior: 'stop'
+      InstanceType: !Ref EC2InstanceType
+      # KeyName: !Ref KeyName
+      SecurityGroupIds:
+        - !Ref EC2SecurityGroup
+      SubnetId: !Ref PublicSubnet1
+      Tenancy: default
+      Tags:
+        - Key: Name
+          Value: WordPress
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+
+          yum -y update
+          yum -y install php httpd mysql
+
+          amazon-linux-extras install php7.4 -y
+
+          yum -y install php-mbstring php-xml
+
+          wget http://ja.wordpress.org/latest-ja.tar.gz -P /tmp/
+          tar zxvf /tmp/latest-ja.tar.gz -C /tmp
+          cp -r /tmp/wordpress/* /var/www/html/
+          chown apache:apache -R /var/www/html
+
+          systemctl enable httpd.service
+          systemctl start httpd.service
+Outputs:
+  WordPressURL:
+    Description: EC2 IPv4 Address
+    Value: !GetAtt EC2Instance.PublicIp
+
+  RDSEndpoint:
+    Description: RDS Endpoint
+    Value: !GetAtt RDSInstance.Endpoint.Address
