@@ -1,6 +1,6 @@
 # GH-900 GitHub Foundations 受講者向け配布資料
 
-研修で使う演習（GitHub Skills / Microsoft Learn）は英語です。このリポジトリに日本語の手順を置いています。
+研修で使う演習（GitHub Skills / Microsoft Learn）は英語です。このフォルダに日本語の手順を置いています。
 演習中は、英語の画面とこの日本語を並べて読んでください。
 
 ## 使い方

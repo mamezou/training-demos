@@ -34,8 +34,8 @@ WordPressをAWS Fargateのコンテナで動かす環境を、AWS CDKで作る�
 ### 1. クローンする
 
 ```bash
-git clone https://github.com/mamezou/fargate-wordpress-cdk.git
-cd fargate-wordpress-cdk
+git clone https://github.com/mamezou/training-demos.git
+cd training-demos/aws/architecting-on-aws/fargate-wordpress-cdk
 ```
 
 ### 2. AWSにログインする
@@ -46,7 +46,7 @@ cd fargate-wordpress-cdk
 aws login --profile wp-handson
 ```
 
-このリポジトリのCDK CLI(2.121.1)は、`aws login`の認証情報を直接読めない。AWS CLIから認証情報を受け取るプロファイル`wp-handson-cdk`を作り、以降はこのプロファイルを使う。
+このハンズオンのCDK CLI(2.121.1)は、`aws login`の認証情報を直接読めない。AWS CLIから認証情報を受け取るプロファイル`wp-handson-cdk`を作り、以降はこのプロファイルを使う。
 
 ```bash
 aws configure set credential_process "aws configure export-credentials --profile wp-handson --format process" --profile wp-handson-cdk

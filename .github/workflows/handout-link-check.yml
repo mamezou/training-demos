@@ -1,17 +1,25 @@
-name: リンク切れ検査
+name: 配布資料のリンク切れ検査
 
+# 配布資料 (az900-handout、gh900-handout、ms4018-handout、tess-handout から移したもの) の
+# Markdown のリンクを検査する。
 on:
   push:
-    branches: [master]
+    branches: [main]
     paths:
-      - "**/*.md"
+      - "aws/aws-fundamentals/technical-essentials-handout/**/*.md"
+      - "azure/az900/handout/**/*.md"
+      - "azure/ms4018/handout/**/*.md"
+      - "github/gh900/handout/**/*.md"
       - ".lycheeignore"
-      - ".github/workflows/link-check.yml"
+      - ".github/workflows/handout-link-check.yml"
   pull_request:
     paths:
-      - "**/*.md"
+      - "aws/aws-fundamentals/technical-essentials-handout/**/*.md"
+      - "azure/az900/handout/**/*.md"
+      - "azure/ms4018/handout/**/*.md"
+      - "github/gh900/handout/**/*.md"
       - ".lycheeignore"
-      - ".github/workflows/link-check.yml"
+      - ".github/workflows/handout-link-check.yml"
   # Markdown を変えなくても外部のリンク先は消えるので、週に1回も確かめる
   schedule:
     - cron: "0 0 * * 1" # 毎週月曜 9:00 (JST)
@@ -39,5 +47,8 @@ jobs:
             --max-retries 3
             --timeout 30
             --accept 200..=299,429
-            "./**/*.md"
+            "./aws/aws-fundamentals/technical-essentials-handout/**/*.md"
+            "./azure/az900/handout/**/*.md"
+            "./azure/ms4018/handout/**/*.md"
+            "./github/gh900/handout/**/*.md"
           fail: true

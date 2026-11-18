@@ -29,18 +29,18 @@
 
 ### 1. フォークする
 
-GitHubで[mamezou/ecs-cicd-cdk](https://github.com/mamezou/ecs-cicd-cdk)を開き、右上の[Fork]から自分のアカウントにフォークする。リポジトリの名前は`ecs-cicd-cdk`のままにする。自分のアカウントに`ecs-cicd-cdk`が表示されたら完了。
+このハンズオンは、研修のデモをまとめた公開リポジトリ training-demos の中にある。GitHubで[mamezou/training-demos](https://github.com/mamezou/training-demos)を開き、右上の[Fork]から自分のアカウントにフォークする。リポジトリの名前は`training-demos`のままにする。自分のアカウントに`training-demos`が表示されたら完了。
 
 ### 2. クローンする
 
 フォークしたリポジトリをクローンする。`<your-github-username>`は自分のGitHubのユーザー名に置き換える。
 
 ```bash
-git clone https://github.com/<your-github-username>/ecs-cicd-cdk.git
-cd ecs-cicd-cdk
+git clone https://github.com/<your-github-username>/training-demos.git
+cd training-demos/aws/advanced-architecting-on-aws/ecs-cicd-cdk
 ```
 
-以降のコマンドは、すべてこの`ecs-cicd-cdk`ディレクトリで実行する。
+以降のコマンドは、すべてこの`aws/advanced-architecting-on-aws/ecs-cicd-cdk`ディレクトリで実行する。
 
 ### 3. AWSにログインする
 
@@ -52,7 +52,7 @@ aws login --profile ecs-handson
 
 AWS SSOを使う人は、`aws login`の代わりに`aws sso login --profile <your-sso-profile>`でログインし、次のコマンドの`--profile ecs-handson`を`--profile <your-sso-profile>`に置き換える。SSOのプロファイルの作り方は[AWS SSOの設定手順](docs/AWS_SSO_SETUP.md)にある。
 
-このリポジトリのCDK CLI(2.110.1)は、`aws login`の認証情報を直接読めない。AWS CLIから認証情報を受け取るプロファイル`ecs-handson-cdk`を作り、以降はこのプロファイルを使う。
+このハンズオンのCDK CLI(2.110.1)は、`aws login`の認証情報を直接読めない。AWS CLIから認証情報を受け取るプロファイル`ecs-handson-cdk`を作り、以降はこのプロファイルを使う。
 
 ```bash
 aws configure set credential_process "aws configure export-credentials --profile ecs-handson --format process" --profile ecs-handson-cdk
@@ -92,12 +92,12 @@ npm run build
 npx cdk bootstrap   # このアカウントとリージョンで初めてCDKを使うときだけ
 npx cdk deploy \
   --parameters githubUserName=<your-github-username> \
-  --parameters githubRespository=ecs-cicd-cdk \
+  --parameters githubRespository=training-demos \
   --parameters githubPersonalTokenSecretName=/ecs-cicd-cdk/github/personal_access_token
 ```
 
 - 3つのパラメータは省かない。省くとスタックの既定値が使われ、フォークしたリポジトリや手順4のシークレットと合わなくなる。
-- `githubRespository`にはフォークしたリポジトリの名前を渡す。パラメータ名はスタックで定義した綴りなので、`githubRepository`に直さない。
+- `githubRespository`にはフォークしたリポジトリの名前（`training-demos`）を渡す。パラメータ名はスタックで定義した綴りなので、`githubRepository`に直さない。
 - デプロイの途中で、作られるIAMロールとセキュリティグループの一覧が出て、`Do you wish to deploy these changes (y/n)?`と聞かれる。`y`を入力する。
 - デプロイは5分ほどかかる。
 
@@ -179,6 +179,7 @@ aws secretsmanager delete-secret \
 - パイプラインのsourceステージが失敗したときは、手順5の`githubUserName`と`githubRespository`の値と、手順4のトークンのスコープを確かめる。
 - パイプラインのbuildステージが失敗したときは、CodeBuildのコンソールでプロジェクト`EcsCicdCdkStack`のビルド履歴を開き、ログを見る。
 - ECSのタスクが起動しないときは、ECSのコンソールでタスクの詳細を開いて停止した理由を見て、CloudWatch Logsでコンテナのログを見る。
+- フォークしたtraining-demosのmainへのpushは、ほかのフォルダの変更でもパイプラインを動かす。
 - pushしてもパイプラインが動かないときは、フォークしたリポジトリの[Settings] → [Webhooks]を開き、URLが`https://ap-northeast-1.webhooks.aws/`で始まるWebhookがあるかを見る。このWebhookがCodePipelineを動かす。なければ、手順4のトークンのスコープに`admin:repo_hook`があるかを確かめる。
 
 ## 詳しい資料

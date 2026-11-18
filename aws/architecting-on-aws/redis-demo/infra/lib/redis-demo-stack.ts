@@ -10,6 +10,8 @@ export interface RedisDemoStackProps extends cdk.StackProps {
   repoUrl: string;
   /** clone するブランチ */
   repoBranch: string;
+  /** repoUrl の中で、このデモがあるフォルダ */
+  repoSubdir: string;
   /** RDS MySQL のエンジンバージョン ("8.4" = major のみ、または "8.4.11" のように固定) */
   mysqlVersion: string;
   /** ElastiCache Valkey のエンジンバージョン */
@@ -128,7 +130,8 @@ export class RedisDemoStack extends cdk.Stack {
       `AWS_REGION=${this.region}`,
       'EOF',
       'chmod 600 /etc/redis-demo.env',
-      `git clone --depth 1 --branch ${props.repoBranch} ${props.repoUrl} /opt/redis-demo`,
+      `git clone --depth 1 --branch ${props.repoBranch} ${props.repoUrl} /opt/repo`,
+      `ln -s /opt/repo/${props.repoSubdir} /opt/redis-demo`,
       'cd /opt/redis-demo && npm ci --omit=dev',
       'touch /opt/redis-demo/.ready',
     );

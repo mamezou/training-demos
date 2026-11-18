@@ -82,7 +82,7 @@ aws secretsmanager create-secret \
 ```bash
 npx cdk deploy \
   --parameters githubUserName=<your-github-username> \
-  --parameters githubRespository=ecs-cicd-cdk \
+  --parameters githubRespository=training-demos \
   --parameters githubPersonalTokenSecretName="/your/custom/secret/name"
 ```
 
@@ -100,9 +100,9 @@ aws secretsmanager get-secret-value \
 
 ### 新規リポジトリとして使用する場合
 
-このリポジトリを自分のGitHubアカウントにフォーク：
+training-demos を自分のGitHubアカウントにフォーク：
 
-1. https://github.com/mamezou/ecs-cicd-cdk にアクセス
+1. https://github.com/mamezou/training-demos にアクセス（このハンズオンは training-demos の中にある）
 2. 右上の **Fork** ボタンをクリック
 3. フォーク先のアカウントを選択
 
@@ -110,8 +110,8 @@ aws secretsmanager get-secret-value \
 
 ```bash
 # フォークしたリポジトリをクローン
-git clone https://github.com/<your-username>/ecs-cicd-cdk.git
-cd ecs-cicd-cdk
+git clone https://github.com/<your-username>/training-demos.git
+cd training-demos/aws/advanced-architecting-on-aws/ecs-cicd-cdk
 ```
 
 ## 🔄 CDKデプロイ時のパラメータ
@@ -122,7 +122,7 @@ cd ecs-cicd-cdk
 npx cdk deploy \
   --profile my-profile \
   --parameters githubUserName=<your-github-username> \
-  --parameters githubRespository=ecs-cicd-cdk \
+  --parameters githubRespository=training-demos \
   --parameters githubPersonalTokenSecretName=/ecs-cicd-cdk/github/personal_access_token
 ```
 

@@ -13,7 +13,8 @@ new RedisDemoStack(app, 'RedisDemoStack', {
   env: { region: 'ap-northeast-1' },
   description: 'redis-demo: Valkey vs MySQL ranking benchmark (disposable, destroy after measuring)',
   // 計測ホストが clone するリポジトリ。ブランチは `-c repoBranch=feat/aws-cdk` のように上書きできる
-  repoUrl: ctx('repoUrl', 'https://github.com/mamezou/redis-demo.git'),
+  repoUrl: ctx('repoUrl', 'https://github.com/mamezou/training-demos.git'),
+  repoSubdir: ctx('repoSubdir', 'aws/architecting-on-aws/redis-demo'),
   repoBranch: ctx('repoBranch', 'main'),
   // RDS は major のみ指定 (RDS がその major の最近のマイナーを選ぶ)。`-c mysqlVersion=8.4.11` で固定可
   mysqlVersion: ctx('mysqlVersion', '8.4'),

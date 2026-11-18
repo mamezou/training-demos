@@ -17,7 +17,11 @@
 
 ## ローカルで計測する (3 コマンド)
 
+このデモは公開リポジトリ training-demos の中にあります。
+
 ```bash
+git clone https://github.com/mamezou/training-demos.git
+cd training-demos/aws/architecting-on-aws/redis-demo
 npm ci
 docker compose up -d
 npm run seed -- --users 100000   # 両方に同じ 10 万件を投入 (既存データは作り直し)
@@ -100,7 +104,7 @@ AWS では EC2 ↔ ElastiCache / RDS のネットワーク往復が加わるた�
   スタックのアカウントは資格情報で決まり、リージョンは `ap-northeast-1` に固定しています
 - 東京リージョンで CDK bootstrap 済みであること (`aws cloudformation describe-stacks --stack-name CDKToolkit --region ap-northeast-1` で確認。
   未なら `cd infra && npx cdk bootstrap`)
-- EC2 は起動時に GitHub からこのリポジトリを `git clone` するので、計測したいブランチが push 済みであること。
+- EC2 は起動時に GitHub から training-demos を `git clone` し、その中の `aws/architecting-on-aws/redis-demo` を使うので、計測したいブランチが push 済みであること。
   `main` 以外を使うときは `-c repoBranch=<branch>` を付けます
 
 ```bash

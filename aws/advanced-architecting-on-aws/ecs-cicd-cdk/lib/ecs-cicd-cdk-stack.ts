@@ -21,7 +21,7 @@ export class EcsCicdCdkStack extends cdk.Stack {
     const githubRepository = new cdk.CfnParameter(this, "githubRespository", {
       type: "String",
       description: "Github source code repository",
-      default: "amazon-ecs-fargate-cdk-v2-cicd"
+      default: "training-demos"
     })
 
     const githubPersonalTokenSecretName = new cdk.CfnParameter(this, "githubPersonalTokenSecretName", {
@@ -173,7 +173,7 @@ export class EcsCicdCdkStack extends cdk.Stack {
           },
           build: {
             commands: [
-              'cd docker-app',
+              'cd aws/advanced-architecting-on-aws/ecs-cicd-cdk/docker-app',
               `docker build -t $ecr_repo_uri:$tag .`,
               '$(aws ecr get-login --no-include-email)',
               'docker push $ecr_repo_uri:$tag'
@@ -182,7 +182,7 @@ export class EcsCicdCdkStack extends cdk.Stack {
           post_build: {
             commands: [
               'echo "in post-build stage"',
-              'cd ..',
+              'cd $CODEBUILD_SRC_DIR',
               "printf '[{\"name\":\"fastapi-app\",\"imageUri\":\"%s\"}]' $ecr_repo_uri:$tag > imagedefinitions.json",
               "pwd; ls -al; cat imagedefinitions.json"
             ]

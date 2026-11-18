@@ -96,15 +96,14 @@ KMSのエンベロープ暗号化でデータキーを作り、ファイルを�
 
 ## 自分のアカウントで試せるハンズオン
 
-自分のAWSアカウントにフォークして試せるリポジトリです。作ったリソースには料金がかかります。使い終わったら削除してください。
+自分のAWSアカウントで試せるハンズオンです。手順は各フォルダのREADMEにあります。作ったリソースには料金がかかります。使い終わったら削除してください。
 
-| モジュール | リポジトリ | 内容 | 所要時間の目安 |
+| モジュール | ハンズオン | 内容 | 所要時間の目安 |
 |---|---|---|---|
-| 1 | [scalable-website-cfn](https://github.com/mamezou/scalable-website-cfn) | CloudFormationでWordPressを作ります。Single-AZの構成から、Multi-AZとAuto Scalingの構成へ段階的に進みます。 | 10〜15分 |
-| 1 | [fargate-wordpress-cdk](https://github.com/mamezou/fargate-wordpress-cdk) | CDK(TypeScript)で、Fargate、RDS、EFSによるWordPressの高可用性構成を作ります。 | 15〜20分 |
-| 5 | [tgw-demo-share](https://github.com/mamezou/tgw-demo-share) | Transit Gatewayで複数のVPCを接続します。 | 10〜15分 |
-| 7 | [ecs-cicd-cdk](https://github.com/mamezou/ecs-cicd-cdk) | GitHubへのpushから、CodePipeline、CodeBuild、手動承認を経て、ECS Fargateに反映するCI/CDを作ります。起動中はALBとFargateの料金がかかります。 | 15〜20分 |
-| 10 | [redis-demo](https://github.com/mamezou/redis-demo) | ElastiCache(Valkey)とRDS for MySQLに同じランキングのデータを入れ、書き込みと順位の取得の速度を比べます。 | 30〜40分 |
+| 1 | [scalable-website-cfn](../architecting-on-aws/scalable-website-cfn/)(Architecting on AWSのフォルダ) | CloudFormationでWordPressを作ります。Single-AZの構成から、Multi-AZとAuto Scalingの構成へ段階的に進みます。 | 10〜15分 |
+| 1 | [fargate-wordpress-cdk](../architecting-on-aws/fargate-wordpress-cdk/)(Architecting on AWSのフォルダ) | CDK(TypeScript)で、Fargate、RDS、EFSによるWordPressの高可用性構成を作ります。 | 15〜20分 |
+| 5 | [tgw-demo-share](tgw-demo-share/) | Transit Gatewayで複数のVPCを接続します。 | 10〜15分 |
+| 7 | [ecs-cicd-cdk](ecs-cicd-cdk/) | GitHubへのpushから、CodePipeline、CodeBuild、手動承認を経て、ECS Fargateに反映するCI/CDを作ります。起動中はALBとFargateの料金がかかります。 | 15〜20分 |
 
 ### モジュール1・WordPress on Fargate(fargate-wordpress-cdk)
 
@@ -112,8 +111,3 @@ CDKで、Application Load Balancer、Fargateのタスク、RDS for MySQL 8.4、E
 
 ![WordPress on Fargateの構成図](diagrams/m01-fargate-wordpress-cdk.png)
 
-### モジュール10・ValkeyとMySQLのランキング性能比較(redis-demo)
-
-CDKで、計測用のEC2、ElastiCache(Valkey)、RDS for MySQLを作ります。手元のPCからSystems ManagerのRun Commandで計測のコマンドを送り、EC2からValkeyとMySQLへの計測の通信を図で確かめます。
-
-![ValkeyとMySQLのランキング性能比較の構成図](diagrams/m10-redis-demo.png)

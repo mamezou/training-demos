@@ -17,8 +17,8 @@ Cookie とセッションの違いを、ブラウザの開発者ツールで確�
 ## 起動
 
 ```bash
-git clone https://github.com/mamezou/web-sec-demo.git
-cd web-sec-demo
+git clone https://github.com/mamezou/training-demos.git
+cd training-demos/security/web-sec-demo
 docker build -t web-sec-demo .
 docker run --rm --name web-sec-demo -p 8080:80 web-sec-demo
 ```

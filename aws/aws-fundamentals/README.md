@@ -61,3 +61,7 @@ EC2にDockerを入れ、Docker HubのGrafanaイメージを起動しました。
 ECRのイメージを、ECSのFargateのサービスで動かしました。必要なタスクの数を3にすると、コンテナIDの違うタスクが3つ動きます。
 
 ![ECSのFargateの構成図](diagrams/dc-5-ecs-fargate.png)
+
+## AWS Technical Essentials の配布資料
+
+ラボを早く終えた人向けの追加課題は [technical-essentials-handout](technical-essentials-handout/) にあります。

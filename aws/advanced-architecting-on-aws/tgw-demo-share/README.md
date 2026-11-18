@@ -44,8 +44,8 @@
 
 ```bash
 # リポジトリのクローン
-git clone https://github.com/mamezou/tgw-demo-share.git
-cd tgw-demo-share
+git clone https://github.com/mamezou/training-demos.git
+cd training-demos/aws/advanced-architecting-on-aws/tgw-demo-share
 
 # 依存関係のインストール
 npm install
