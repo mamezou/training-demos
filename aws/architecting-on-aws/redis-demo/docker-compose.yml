@@ -1,0 +1,35 @@
+# ローカル計測用。ElastiCache Valkey / RDS MySQL 8.4 とエンジンを揃える
+# (イメージタグの確認結果は docs/SOURCES.md)
+services:
+  valkey:
+    image: valkey/valkey:8
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - valkey_data:/data
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: demo
+      MYSQL_DATABASE: demo
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: demo
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-udemo", "-pdemo"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+
+volumes:
+  valkey_data:
+  mysql_data:
